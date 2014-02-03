@@ -10,6 +10,9 @@ class LeapYearController
 {
     public function indexAction(Request $request, $year)
     {
+        if ($year < 0) {
+          throw new \Exception('The year needs to be a postive number.');
+        }
         $leapyear = new LeapYear();
         if ($leapyear->isLeapYear($year)) {
             $response = new Response('Yep, this is a leap year!' . rand());
