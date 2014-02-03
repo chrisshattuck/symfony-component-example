@@ -27,11 +27,7 @@ $errorHandler = function (HttpKernel\Exception\FlattenException $exception) {
 };
 $dispatcher->addSubscriber(new HttpKernel\EventListener\ExceptionListener($errorHandler));
 
-// Example of adding a listener that will run Response::prepare() before the response is sent:
-//$dispatcher->addSubscriber(new HttpKernel\EventListener\ResponseListener('UTF-8'));
-
-// Example of adding support for a streamed response:
-//$dispatcher->addSubscriber(new HttpKernel\EventListener\StreamedResponseListener());
+$dispatcher->addSubscriber(new Simplex\StringResponseListener());
  
 $framework = new Simplex\Framework($dispatcher, $resolver);
  
